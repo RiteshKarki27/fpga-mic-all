@@ -70,8 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
-set_param xicom.use_bs_reader 1
+set_param project.hsv.suppressChildGraphs 0
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -92,6 +91,9 @@ read_verilog -library xil_defaultlib -sv {
   /home/fpga14/fpga_14_all/project_2/pkg.sv
   /home/fpga14/fpga_14_all/project_2/fft_top.sv
 }
+read_ip -quiet /home/fpga14/fpga_14_all/project_2/project_2.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci
+set_property used_in_implementation false [get_files -all /home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_ooc.xdc]
+
 read_ip -quiet /home/fpga14/fpga_14_all/project_2/project_2.srcs/sources_1/ip/xfft_0/xfft_0.xci
 set_property used_in_implementation false [get_files -all /home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc]
 
@@ -104,6 +106,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

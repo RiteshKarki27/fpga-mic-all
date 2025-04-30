@@ -3,16 +3,16 @@
 # SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Wed Apr 30 17:53:09 2025
-# Process ID: 265820
+# Start of session at: Wed Apr 30 18:00:32 2025
+# Process ID: 268851
 # Current directory: /home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1
 # Command line: vivado -log fft_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fft_top.tcl
 # Log file: /home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/fft_top.vds
 # Journal file: /home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/vivado.jou
-# Running On: FPGA14L, OS: Linux, CPU Frequency: 3688.037 MHz, CPU Physical cores: 4, Host memory: 6129 MB
+# Running On: FPGA14L, OS: Linux, CPU Frequency: 3263.680 MHz, CPU Physical cores: 4, Host memory: 6129 MB
 #-----------------------------------------------------------
 source fft_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1328.297 ; gain = 97.062 ; free physical = 1245 ; free virtual = 3720
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1312.949 ; gain = 54.039 ; free physical = 1485 ; free virtual = 3128
 Command: synth_design -top fft_top -part xc7a100tcsg324-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
@@ -20,4 +20,98 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 266080
+INFO: [Synth 8-7075] Helper process launched with PID 269000
+WARNING: [Synth 8-11067] parameter 'BITSIMAG' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:5]
+WARNING: [Synth 8-11067] parameter 'BITSREAL' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:6]
+WARNING: [Synth 8-11067] parameter 'WINDOWSTEP_MS' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:17]
+WARNING: [Synth 8-11067] parameter 'WINDOWSIZE_MS' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:18]
+WARNING: [Synth 8-11067] parameter 'SAMPLE_PER_MS' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:19]
+WARNING: [Synth 8-11067] parameter 'FRAME_WIDTH_MS' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:20]
+WARNING: [Synth 8-11067] parameter 'REQUIRED_FRAMES' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:22]
+WARNING: [Synth 8-11067] parameter 'PARALLELISM' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:26]
+WARNING: [Synth 8-11067] parameter 'FIFO_DEPTH_MS' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:27]
+WARNING: [Synth 8-11067] parameter 'FIFO_DEPTH' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:28]
+WARNING: [Synth 8-11067] parameter 'WINDOWSTEP' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:29]
+WARNING: [Synth 8-11067] parameter 'ENOUGH_DATA' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:32]
+WARNING: [Synth 8-11067] parameter 'FRAME_SIZE' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:33]
+WARNING: [Synth 8-11067] parameter 'WAIT_SIZE' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:34]
+WARNING: [Synth 8-11067] parameter 'FRAME_COUNT' declared inside package 'fft_pkg' shall be treated as localparam [/home/fpga14/fpga_14_all/project_2/pkg.sv:36]
+WARNING: [Synth 8-9661] initial value of parameter 'dtype_t' is omitted [/home/fpga14/fpga_14_all/project_2/fft_top.sv:376]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2055.469 ; gain = 376.730 ; free physical = 481 ; free virtual = 2132
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'fft_top' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'serial_fft' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:76]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_tdpram' [/mnt/data40tb/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:9044]
+	Parameter MEMORY_SIZE bound to: 32768 - type: integer 
+	Parameter MEMORY_PRIMITIVE bound to: auto - type: string 
+	Parameter CLOCKING_MODE bound to: common_clock - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter MEMORY_INIT_FILE bound to: none - type: string 
+	Parameter MEMORY_INIT_PARAM bound to: 0 - type: string 
+	Parameter USE_MEM_INIT bound to: 1 - type: integer 
+	Parameter WAKEUP_TIME bound to: disable_sleep - type: string 
+	Parameter AUTO_SLEEP_TIME bound to: 0 - type: integer 
+	Parameter MESSAGE_CONTROL bound to: 0 - type: integer 
+	Parameter USE_EMBEDDED_CONSTRAINT bound to: 0 - type: integer 
+	Parameter MEMORY_OPTIMIZATION bound to: true - type: string 
+	Parameter WRITE_DATA_WIDTH_A bound to: 32 - type: integer 
+	Parameter READ_DATA_WIDTH_A bound to: 32 - type: integer 
+	Parameter BYTE_WRITE_WIDTH_A bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH_A bound to: 10 - type: integer 
+	Parameter READ_RESET_VALUE_A bound to: 0 - type: string 
+	Parameter READ_LATENCY_A bound to: 2 - type: integer 
+	Parameter WRITE_MODE_A bound to: no_change - type: string 
+	Parameter WRITE_DATA_WIDTH_B bound to: 32 - type: integer 
+	Parameter READ_DATA_WIDTH_B bound to: 32 - type: integer 
+	Parameter BYTE_WRITE_WIDTH_B bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH_B bound to: 10 - type: integer 
+	Parameter READ_RESET_VALUE_B bound to: 0 - type: string 
+	Parameter READ_LATENCY_B bound to: 2 - type: integer 
+	Parameter WRITE_MODE_B bound to: no_change - type: string 
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [/mnt/data40tb/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [/mnt/data40tb/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:508]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's.   [/mnt/data40tb/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:510]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [/mnt/data40tb/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_tdpram' (0#1) [/mnt/data40tb/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:9044]
+INFO: [Synth 8-6157] synthesizing module 'BUFGCE' [/mnt/data40tb/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:1529]
+INFO: [Synth 8-6155] done synthesizing module 'BUFGCE' (0#1) [/mnt/data40tb/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:1529]
+INFO: [Synth 8-6157] synthesizing module 'xfft_0' [/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/xfft_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'xfft_0' (0#1) [/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/xfft_0_stub.v:6]
+WARNING: [Synth 8-689] width (33) of port connection 'm_axis_data_tdata' does not match port width (32) of module 'xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:294]
+WARNING: [Synth 8-7071] port 's_axis_config_tdata' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 's_axis_config_tvalid' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 's_axis_config_tready' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 's_axis_data_tlast' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'm_axis_data_tready' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'm_axis_data_tlast' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'event_frame_started' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'event_tlast_unexpected' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'event_tlast_missing' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'event_status_channel_halt' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'event_data_in_channel_halt' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7071] port 'event_data_out_channel_halt' of module 'xfft_0' is unconnected for instance 'i_xfft_0' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+WARNING: [Synth 8-7023] instance 'i_xfft_0' of module 'xfft_0' has 18 connections declared, but only 6 given [/home/fpga14/fpga_14_all/project_2/fft_top.sv:288]
+INFO: [Synth 8-6155] done synthesizing module 'serial_fft' (0#1) [/home/fpga14/fpga_14_all/project_2/fft_top.sv:76]
+INFO: [Synth 8-6157] synthesizing module 'fft_abs_value' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:299]
+INFO: [Synth 8-6157] synthesizing module 'stream_register' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:348]
+INFO: [Synth 8-6155] done synthesizing module 'stream_register' (0#1) [/home/fpga14/fpga_14_all/project_2/fft_top.sv:348]
+INFO: [Synth 8-6157] synthesizing module 'sqrt_cordic' [/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/sqrt_cordic_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sqrt_cordic' (0#1) [/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/sqrt_cordic_stub.v:6]
+ERROR: [Synth 8-11365] for the instance 'sqrt_i' of module 'sqrt_cordic' declared at '/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/sqrt_cordic_stub.v:6', named port connection 's_axis_cartesian_tready' does not exist [/home/fpga14/fpga_14_all/project_2/fft_top.sv:335]
+ERROR: [Synth 8-11365] for the instance 'sqrt_i' of module 'sqrt_cordic' declared at '/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/sqrt_cordic_stub.v:6', named port connection 's_axis_cartesian_tlast' does not exist [/home/fpga14/fpga_14_all/project_2/fft_top.sv:336]
+WARNING: [Synth 8-689] width (40) of port connection 's_axis_cartesian_tdata' does not match port width (32) of module 'sqrt_cordic' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:337]
+ERROR: [Synth 8-11365] for the instance 'sqrt_i' of module 'sqrt_cordic' declared at '/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/sqrt_cordic_stub.v:6', named port connection 'm_axis_dout_tready' does not exist [/home/fpga14/fpga_14_all/project_2/fft_top.sv:339]
+ERROR: [Synth 8-11365] for the instance 'sqrt_i' of module 'sqrt_cordic' declared at '/home/fpga14/fpga_14_all/project_2/project_2.runs/synth_1/.Xil/Vivado-268851-FPGA14L/realtime/sqrt_cordic_stub.v:6', named port connection 'm_axis_dout_tlast' does not exist [/home/fpga14/fpga_14_all/project_2/fft_top.sv:340]
+WARNING: [Synth 8-689] width (16) of port connection 'm_axis_dout_tdata' does not match port width (32) of module 'sqrt_cordic' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:341]
+ERROR: [Synth 8-6156] failed synthesizing module 'fft_abs_value' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:299]
+ERROR: [Synth 8-6156] failed synthesizing module 'fft_top' [/home/fpga14/fpga_14_all/project_2/fft_top.sv:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2125.406 ; gain = 446.668 ; free physical = 396 ; free virtual = 2047
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+24 Infos, 32 Warnings, 0 Critical Warnings and 7 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 30 18:01:06 2025...

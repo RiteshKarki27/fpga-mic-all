@@ -287,7 +287,7 @@ BUFGCE clk_gate (
 /// Task 4: instantiate the FFT IP 
 xfft_0 i_xfft_0(
      .aclk(clk),
-     .s_axis_data_valid(valid_i),
+     .s_axis_data_tvalid(valid_i),
      .s_axis_data_tready(fft_ready),
      .s_axis_data_tdata(config_data),
      .m_axis_data_tvalid(valid_o),
