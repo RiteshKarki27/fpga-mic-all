@@ -1,0 +1,244 @@
+
+*** Running vivado
+    with args -log fft_top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source fft_top.tcl -notrace
+
+
+****** Vivado v2023.1 (64-bit)
+  **** SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
+  **** IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+  **** SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source fft_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1312.574 ; gain = 6.023 ; free physical = 849 ; free virtual = 2094
+Command: link_design -top fft_top -part xc7a100tcsg324-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-454] Reading design checkpoint '/home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/cordic_0_1/cordic_0.dcp' for cell 'abs_value_i/sqrt_i'
+INFO: [Project 1-454] Reading design checkpoint '/home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/xfft_0_1/xfft_0.dcp' for cell 'u_serial_fft/i_xfft_0'
+Netlist sorting complete. Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.16 . Memory (MB): peak = 1710.020 ; gain = 0.000 ; free physical = 443 ; free virtual = 1811
+INFO: [Netlist 29-17] Analyzing 582 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/fpga14/fpga_14_all/project_2/Nexys-A7-100T-Master.xdc]
+Finished Parsing XDC File [/home/fpga14/fpga_14_all/project_2/Nexys-A7-100T-Master.xdc]
+Parsing XDC File [/home/fpga14/fpga_14_all/project_2/floorplan.xdc]
+WARNING: [Vivado 12-584] No ports matched 'led[0]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:29]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:29]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[1]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:30]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:30]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[2]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:31]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:31]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[3]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:32]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:32]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[4]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:33]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:33]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[5]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:34]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:34]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[6]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:35]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:35]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[7]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:36]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:36]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[8]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:37]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:37]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[9]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:38]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:38]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[10]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:39]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:39]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[11]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:40]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:40]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[12]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:41]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:41]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[13]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:42]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:42]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[14]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[15]'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:44]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:44]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i2s_sel'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:105]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:105]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i2s_lrclk'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:106]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:106]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i2s_data'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:107]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:107]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i2s_clk'. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:108]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fpga14/fpga_14_all/project_2/floorplan.xdc:108]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [/home/fpga14/fpga_14_all/project_2/floorplan.xdc]
+Parsing XDC File [/home/fpga14/fpga_14_all/project_2/timing.xdc]
+WARNING: [Vivado 12-584] No ports matched 'led*'. [/home/fpga14/fpga_14_all/project_2/timing.xdc:16]
+CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-to [get_ports led*]'. [/home/fpga14/fpga_14_all/project_2/timing.xdc:16]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-180] No cells matched '*/*async_reg*'. [/home/fpga14/fpga_14_all/project_2/timing.xdc:17]
+CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-to [get_cells */*async_reg*]'. [/home/fpga14/fpga_14_all/project_2/timing.xdc:17]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+Finished Parsing XDC File [/home/fpga14/fpga_14_all/project_2/timing.xdc]
+INFO: [Project 1-1714] 1 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2409.312 ; gain = 0.000 ; free physical = 169 ; free virtual = 1318
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 31 instances were transformed.
+  RAM128X1S => RAM128X1S (MUXF7, RAMS64E(x2)): 31 instances
+
+10 Infos, 22 Warnings, 22 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2409.312 ; gain = 1067.020 ; free physical = 169 ; free virtual = 1318
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2441.328 ; gain = 32.016 ; free physical = 140 ; free virtual = 1287
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1a0ace61b
+
+Time (s): cpu = 00:00:00.72 ; elapsed = 00:00:00.38 . Memory (MB): peak = 2441.328 ; gain = 0.000 ; free physical = 133 ; free virtual = 1281
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+WARNING: [Opt 31-155] Driverless net abs_value_i/sqrt_i/U0/i_synth/i_nd_to_rdy/s_axis_phase_tvalid is driving LUT input pin I0 which is used by the LUT equation. If the LUT is not removed or a driver added, this warning will become an error. LUT cell name: abs_value_i/sqrt_i/U0/i_synth/i_nd_to_rdy/opt_has_pipe.first_q[0]_i_1
+INFO: [Opt 31-1566] Pulled 16 inverters resulting in an inversion of 336 pins
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 86 load pin(s).
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[10]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[11]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[12]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[13]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[14]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[15]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[16]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[17]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[18]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[19]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[4]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[5]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[6]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[7]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[8]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[9]
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 196dccad7
+
+Time (s): cpu = 00:00:00.87 ; elapsed = 00:00:00.69 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 134 ; free virtual = 1018
+INFO: [Opt 31-389] Phase Retarget created 92 cells and removed 196 cells
+
+Phase 2 Constant propagation
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[10]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[11]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[12]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[13]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[14]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[15]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[16]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[17]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[18]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[19]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[4]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[5]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[6]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[7]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[8]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[9]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 14af06a62
+
+Time (s): cpu = 00:00:00.99 ; elapsed = 00:00:00.83 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 133 ; free virtual = 1018
+INFO: [Opt 31-389] Phase Constant propagation created 131 cells and removed 191 cells
+
+Phase 3 Sweep
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[10]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[11]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[12]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[13]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[14]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[15]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[16]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[17]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[18]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[19]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[4]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[5]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[6]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[7]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[8]
+CRITICAL WARNING: [Opt 31-430] Found a FDRE that its data pin is undriven. Driver is required to prevent unexpected behavior:abs_value_i/sqrt_i/U0/i_synth/i_synth/gen_cordic.input_stage/gen_input_regs.phase_int_reg[9]
+Phase 3 Sweep | Checksum: 1bdc2fafd
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 137 ; free virtual = 1018
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 101 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 1bdc2fafd
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 136 ; free virtual = 1017
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 5 Shift Register Optimization | Checksum: 1ad4cf9ec
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 136 ; free virtual = 1001
+INFO: [Opt 31-389] Phase Shift Register Optimization created 3 cells and removed 6 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 20313f088
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 134 ; free virtual = 1000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              92  |             196  |                                              0  |
+|  Constant propagation         |             131  |             191  |                                              0  |
+|  Sweep                        |               0  |             101  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               3  |               6  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+ERROR: [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: abs_value_i/sqrt_i/U0/i_synth/i_nd_to_rdy/opt_has_pipe.first_q[0]_i_1.
+Resolution: Please review the preceding OPT INFO messages that detail what has been trimmed in the design to determine if the removal of unused logic is causing this error. If opt_design is being specified directly, it will need to be rerun with opt_design -verbose to generate detailed INFO messages about trimming.
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2683.211 ; gain = 0.000 ; free physical = 130 ; free virtual = 998
+INFO: [Common 17-83] Releasing license: Implementation
+27 Infos, 23 Warnings, 70 Critical Warnings and 2 Errors encountered.
+opt_design failed
+ERROR: [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: abs_value_i/sqrt_i/U0/i_synth/i_nd_to_rdy/opt_has_pipe.first_q[0]_i_1.
+Resolution: Please review the preceding OPT INFO messages that detail what has been trimmed in the design to determine if the removal of unused logic is causing this error. If opt_design is being specified directly, it will need to be rerun with opt_design -verbose to generate detailed INFO messages about trimming.
+INFO: [Common 17-206] Exiting Vivado at Wed May  7 16:43:06 2025...

@@ -1,0 +1,9 @@
+0.7
+2020.2
+May  7 2023
+15:10:42
+/home/fpga14/fpga_14_all/project_2/fft_top.sv,1746616584,systemVerilog,,,,drop_upper_frames;drop_upper_freqs;fft_abs_value;fft_top;serial_fft;stream_register,,uvm,,,,,,
+/home/fpga14/fpga_14_all/project_2/pkg.sv,1746010022,systemVerilog,/home/fpga14/fpga_14_all/project_2/fft_top.sv,/home/fpga14/fpga_14_all/project_2/fft_top.sv,,fft_pkg,,uvm,,,,,,
+/home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/sqrt_cordic/sim/sqrt_cordic.vhd,1746028955,vhdl,,,,sqrt_cordic,,,,,,,,
+/home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/xfft_0/sim/xfft_0.vhd,1746026773,vhdl,,,,xfft_0,,,,,,,,
+/home/fpga14/fpga_14_all/project_2/project_2.sim/sim_1/behav/xsim/glbl.v,1717501569,verilog,,,,glbl,,uvm,,,,,,

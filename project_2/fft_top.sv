@@ -198,19 +198,15 @@ always_comb begin
         1'b1: state_next = ACTIVE; 
         1'b0: state_next = state; 
     endcase
-end
 
-/*always_comb begin 
-    if(active) 
-        state = (sample_count == 97) ? WAIT_TRIGGER : ACTIVE; 
-end*/
-         
+	if (done == 'b1) state_next = WAIT_TRIGGER;
+end      
      
-
 /// Task 2: generate waddr and we to capture data
 always_ff @(posedge clk or negedge arstn) begin 
     if (!arstn) waddr <= '0;
     else if (state == WAIT_TRIGGER) waddr <= '0;
+	else if (waddr == Size) waddr <= '0;
     else if (we) waddr <= waddr + 1;
 end
 
@@ -258,15 +254,43 @@ assign re = count > 0 && raddr != waddr && state == ACTIVE;
 /// Task 3: generate delayed valid and last signals
 logic rvalid; 
 logic rl;
-always_ff @(posedge clk) begin 
-    rvalid <= re;
-    rl <= rlast; 
- end 
+logic [1:0] counter;
+// always_ff @(posedge clk) begin 
+//     rvalid <= re;
+//     rl <= rlast; 
+//  end 
  
- always_ff @(posedge clk) begin 
-    re <= rvalid;
-    rlast <= rl;
-end 
+//  always_ff @(posedge clk) begin 
+//     re <= rvalid;
+//     rlast <= rl;
+// end 
+
+// always_ff @(posedge clk) begin 
+// 	rvalid <= re; 
+// end
+
+// always_ff @(posedge clk) begin 
+// 	rl <= rlast;
+// end
+
+
+always_ff @(posedge clk) begin
+	if (~arstn) begin
+		rvalid <= 'b0;
+		rl <= 'b0;
+		counter <= 0;
+	end else begin 
+		if (counter < Latency) counter <= counter + 1;
+		else counter <= counter;
+	end
+
+	if (counter == Latency) begin 
+		rvalid <= re; 
+		rl <= rlast; 
+		counter <= 0;
+	end
+end
+
 
 
 // FFT instantiation and its configuration
@@ -279,6 +303,8 @@ struct packed {
 assign config_data.fwd_inv = '1;
 assign config_data.scale_sched = 18'hAAA; 
 logic fft_ready;  // .s_axis_data_tready (fft_ready), assume that tready is always true
+logic fft_o_ready;
+logic fft_o_tlast;
 BUFGCE clk_gate (
 	.O(clk),
 	.CE(fft_ready),
@@ -287,11 +313,19 @@ BUFGCE clk_gate (
 /// Task 4: instantiate the FFT IP 
 xfft_0 i_xfft_0(
      .aclk(clk),
-     .s_axis_data_tvalid(valid_i),
-     .s_axis_data_tready(fft_ready),
-     .s_axis_data_tdata(config_data),
+     .s_axis_config_tvalid(rvalid),
+	 .s_axis_config_tdata(config_data),
+	 .s_axis_config_tready(fft_ready),
+
+     .s_axis_data_tvalid(rvalid), //check
+     .s_axis_data_tready(fft_o_ready),
+     .s_axis_data_tdata(rdata),
+	 .s_axis_data_tlast(rl),
+
      .m_axis_data_tvalid(valid_o),
-     .m_axis_data_tdata(data_o));
+     .m_axis_data_tdata(data_o),
+	 .m_axis_data_tready(ready_i),
+	 .m_axis_data_tlast(fft_o_tlast)); 
      
 endmodule
 
@@ -329,15 +363,15 @@ stream_register #(
 	.ready_i(square_value_ready)
 );
 logic [15:0] sqrt_value;
-sqrt_cordic sqrt_i (
+cordic_0 sqrt_i (
 	.aclk(clk),
 	.s_axis_cartesian_tvalid(square_value_valid),
-	.s_axis_cartesian_tready(square_value_ready),
-	.s_axis_cartesian_tlast(square_value_reg.last),
+	//.s_axis_cartesian_tready(square_value_ready),
+	//.s_axis_cartesian_tlast(square_value_reg.last),
 	.s_axis_cartesian_tdata(square_value_reg.value),
 	.m_axis_dout_tvalid(abs_valid),
-	.m_axis_dout_tready(abs_ready),
-	.m_axis_dout_tlast(abs_data.tlast),
+	//.m_axis_dout_tready(abs_ready),
+	//.m_axis_dout_tlast(abs_data.tlast),
 	.m_axis_dout_tdata(sqrt_value )
 );
 assign abs_data.tdata = 2*sqrt_value[0+:16];

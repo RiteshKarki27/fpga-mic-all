@@ -70,7 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param project.hsv.suppressChildGraphs 0
+set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -91,11 +91,11 @@ read_verilog -library xil_defaultlib -sv {
   /home/fpga14/fpga_14_all/project_2/pkg.sv
   /home/fpga14/fpga_14_all/project_2/fft_top.sv
 }
-read_ip -quiet /home/fpga14/fpga_14_all/project_2/project_2.srcs/sources_1/ip/sqrt_cordic/sqrt_cordic.xci
-set_property used_in_implementation false [get_files -all /home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/sqrt_cordic/sqrt_cordic_ooc.xdc]
+read_ip -quiet /home/fpga14/fpga_14_all/project_2/project_2.srcs/sources_1/ip/cordic_0_1/cordic_0.xci
+set_property used_in_implementation false [get_files -all /home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/cordic_0_1/cordic_0_ooc.xdc]
 
-read_ip -quiet /home/fpga14/fpga_14_all/project_2/project_2.srcs/sources_1/ip/xfft_0/xfft_0.xci
-set_property used_in_implementation false [get_files -all /home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc]
+read_ip -quiet /home/fpga14/fpga_14_all/project_2/project_2.srcs/sources_1/ip/xfft_0_1/xfft_0.xci
+set_property used_in_implementation false [get_files -all /home/fpga14/fpga_14_all/project_2/project_2.gen/sources_1/ip/xfft_0_1/xfft_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -106,9 +106,20 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc /home/fpga14/fpga_14_all/project_2/Nexys-A7-100T-Master.xdc
+set_property used_in_implementation false [get_files /home/fpga14/fpga_14_all/project_2/Nexys-A7-100T-Master.xdc]
+
+read_xdc /home/fpga14/fpga_14_all/project_2/floorplan.xdc
+set_property used_in_implementation false [get_files /home/fpga14/fpga_14_all/project_2/floorplan.xdc]
+
+read_xdc /home/fpga14/fpga_14_all/project_2/timing.xdc
+set_property used_in_implementation false [get_files /home/fpga14/fpga_14_all/project_2/timing.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental /home/fpga14/fpga_14_all/project_2/project_2.srcs/utils_1/imports/synth_1/fft_top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
