@@ -22,9 +22,9 @@ fft_pkg::complex_str_t fft_ser;
 logic fft_ser_valid, fft_ser_ready;
 
 serial_fft u_serial_fft (
-	.clk_i    (clk    ),
-	.arstn  (arstn  ),
-	.active (active ),
+	.clk_i    (clk),
+	.arstn  (arstn),
+	.active (active),
 	.data_i (data ),
 	.valid_i(data_valid),
 	.trigger(trigger),
@@ -180,40 +180,73 @@ end
 logic done;
 assign done = (frame_count == fft_pkg::REQUIRED_FRAMES-1) && rlast && re;
 
+
+
 // defining the state machine with two states: WAIT_TRIGGER (waiting for trigger) or ACTIVE (trigger activated)
 typedef enum {WAIT_TRIGGER, ACTIVE} state_t;
-logic sampled; // added 
 state_t state,state_next;
-assign active  = state != WAIT_TRIGGER;
+always_comb begin 
+    if (state == ACTIVE) active = '1;
+    else active = '0;
+end
+//assign active  = state != WAIT_TRIGGER;
 /// Task 1: implement the state machine
 
-
+logic [7:0] flag;
 always_ff @(posedge clk or negedge arstn) begin 
-    if (~arstn) state <= WAIT_TRIGGER;
-    else state <= state_next;
+    if (!arstn) state <= WAIT_TRIGGER;
+    else begin 
+    state <= state_next;
+    end
 end 
 
-always_comb begin 
-    case(trigger)     
-        1'b1: state_next = ACTIVE; 
-        1'b0: state_next = state; 
-    endcase
 
-	if (done == 'b1) state_next = WAIT_TRIGGER;
-end      
+
+// always_comb begin 
+//     case(trigger)     
+//         1'b1: state_next = ACTIVE; 
+//         1'b0: state_next = state; 
+//     endcase
+
+// 	(done == 'b1) state_next = WAIT_TRIGGER;
+// end      
+
+
+always_comb begin 
+	case (state)
+		WAIT_TRIGGER: begin
+			if (trigger == 1'b1 && done != 'b1) begin 
+			     state_next = ACTIVE;
+			end 
+			else state_next = WAIT_TRIGGER;
+		end
+		ACTIVE: begin
+			if (done == 1'b1) state_next = WAIT_TRIGGER; 
+			else state_next = ACTIVE; 
+		end
+	endcase
+end
+
      
 /// Task 2: generate waddr and we to capture data
 always_ff @(posedge clk or negedge arstn) begin 
     if (!arstn) waddr <= '0;
     else if (state == WAIT_TRIGGER) waddr <= '0;
-	else if (waddr == Size) waddr <= '0;
-    else if (we) waddr <= waddr + 1;
+	// else if (waddr ==	Size-1) waddr <= '0;
+    //else if (we) waddr <= waddr + 1;
+    else if (valid_i && state == ACTIVE) begin
+        if (waddr == Size-1) waddr <= '0;
+        else waddr <= waddr + 1;
+    end 
+    
 end
 
-always_ff @(posedge clk or negedge arstn) begin 
+/*always_ff @(posedge clk or negedge arstn) begin 
     if (!arstn) we <= '0;
     else if (valid_i) we <= '1;
-end
+end*/
+
+assign we = valid_i && state == ACTIVE;
     
 // generating raddr and re to control data movement
 // generating raddr:
@@ -251,10 +284,32 @@ always_ff @(posedge clk or negedge arstn) begin
 end
 assign re = count > 0 && raddr != waddr && state == ACTIVE;
 
+
+
 /// Task 3: generate delayed valid and last signals
 logic rvalid; 
 logic rl;
 logic [1:0] counter;
+logic [2:0] shift_rv; 
+logic [2:0] shift_rl; 
+
+always_ff @(posedge clk or negedge arstn) begin
+	if (!arstn) begin 
+		shift_rv <= 0; 
+		shift_rl <= 0; 
+	end else if (state == WAIT_TRIGGER) begin
+		shift_rv <= 0; 
+		shift_rl <= 0; 
+	end else if (state == ACTIVE) begin
+		shift_rv <= shift_rv << 1; 
+		shift_rl <= shift_rl << 1; 
+		shift_rv <= {shift_rv[2:1], re}; 
+		shift_rl <= {shift_rl[2:1], shift_rl}; 
+	end 
+end
+
+assign rvalid = shift_rv[2]; 
+assign rl = shift_rl[2]; 
 // always_ff @(posedge clk) begin 
 //     rvalid <= re;
 //     rl <= rlast; 
@@ -274,22 +329,22 @@ logic [1:0] counter;
 // end
 
 
-always_ff @(posedge clk) begin
-	if (~arstn) begin
-		rvalid <= 'b0;
-		rl <= 'b0;
-		counter <= 0;
-	end else begin 
-		if (counter < Latency) counter <= counter + 1;
-		else counter <= counter;
-	end
+// always_ff @(posedge clk) begin
+// 	if (~arstn) begin
+// 		rvalid <= 'b0;
+// 		rl <= 'b0;
+// 		counter <= 0;
+// 	end else begin 
+// 		if (counter < Latency) counter <= counter + 1;
+// 		else counter <= counter;
+// 	end
 
-	if (counter == Latency) begin 
-		rvalid <= re; 
-		rl <= rlast; 
-		counter <= 0;
-	end
-end
+// 	if (counter == Latency) begin 
+// 		rvalid <= re; 
+// 		rl <= rlast; 
+// 		counter <= 0;
+// 	end
+// end
 
 
 
@@ -303,22 +358,23 @@ struct packed {
 assign config_data.fwd_inv = '1;
 assign config_data.scale_sched = 18'hAAA; 
 logic fft_ready;  // .s_axis_data_tready (fft_ready), assume that tready is always true
-logic fft_o_ready;
+logic fft_d_ready;
 logic fft_o_tlast;
-BUFGCE clk_gate (
+/*BUFGCE clk_gate (
 	.O(clk),
 	.CE(fft_ready),
 	.I(clk_i)
-);
+);*/
+assign clk = clk_i;
 /// Task 4: instantiate the FFT IP 
 xfft_0 i_xfft_0(
      .aclk(clk),
      .s_axis_config_tvalid(rvalid),
-	 .s_axis_config_tdata(config_data),
+	 .s_axis_config_tdata(config_data.scale_sched),
 	 .s_axis_config_tready(fft_ready),
 
      .s_axis_data_tvalid(rvalid), //check
-     .s_axis_data_tready(fft_o_ready),
+     .s_axis_data_tready(fft_d_ready),
      .s_axis_data_tdata(rdata),
 	 .s_axis_data_tlast(rl),
 
@@ -327,6 +383,19 @@ xfft_0 i_xfft_0(
 	 .m_axis_data_tready(ready_i),
 	 .m_axis_data_tlast(fft_o_tlast)); 
      
+always_ff @(posedge clk) begin
+    // $display("State: %b, State Next: %b", state, state_next);
+    // $display("Frame count: %b, State Next: %b", frame_count, state_next);
+    $display("Sample count: %b", sample_count);
+    $display("re: %b, we: %b", re, we);
+	$display("rvalid: %b, config_data.scale_sched %b, fft_ready %b", rvalid, config_data.scale_sched, fft_ready);
+	$display("fft_d_ready %b, rdata %b, rl %b", fft_d_ready, rdata, rl);
+	$display("valid_o %b, data_o %b, ready_i %b, fft_o_tlast %b", valid_o, data_o, ready_i, fft_o_tlast);
+
+end
+
+
+
 endmodule
 
 
