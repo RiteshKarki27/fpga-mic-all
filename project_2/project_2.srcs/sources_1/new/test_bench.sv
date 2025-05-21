@@ -21,13 +21,17 @@
 
 
 module test_bench(
-
     );
     logic clk; 
     logic arstn, active, valid_i, trig, valid_o, ready_i;
     
+    //logic fft_pkg::complex_t data;
+    
+    // var logic fft_pkg::complex_t data;
     logic [31:0] data;
-    logic [128:0] data_o;
+    // logic [128:0] data_o;
+    // var logic fft_pkg::complex_str_t data_o;
+    logic [32:0] data_o;
     
     serial_fft i_serial_fft(
                     .clk_i(clk),
@@ -51,7 +55,7 @@ module test_bench(
     initial begin  
         clk = 0;
         arstn = 0;
-        data = 16'b0;
+        data = 0;
         trig = 0;
 
 
@@ -61,7 +65,7 @@ module test_bench(
         ready_i = 1;
         repeat (2*fft_pkg::SAMPLE_PER_MS*fft_pkg::WINDOWSIZE_MS) begin
             valid_i = 1;
-            data = $random;
+            data = {16'b0, $random};
             #10;
         end
         

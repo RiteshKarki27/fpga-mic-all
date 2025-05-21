@@ -235,10 +235,9 @@ always_ff @(posedge clk or negedge arstn) begin
 	// else if (waddr ==	Size-1) waddr <= '0;
     //else if (we) waddr <= waddr + 1;
     else if (valid_i && state == ACTIVE) begin
-        if (waddr == Size-1) waddr <= '0;
-        else waddr <= waddr + 1;
+        if (waddr == Words-1) waddr <= '0;
+        else waddr <= waddr + 'd1;
     end 
-    
 end
 
 /*always_ff @(posedge clk or negedge arstn) begin 
@@ -290,26 +289,36 @@ assign re = count > 0 && raddr != waddr && state == ACTIVE;
 logic rvalid; 
 logic rl;
 logic [1:0] counter;
-logic [2:0] shift_rv; 
-logic [2:0] shift_rl; 
+logic [1:0] shift_rv; 
+logic [1:0] shift_rl; 
 
 always_ff @(posedge clk or negedge arstn) begin
 	if (!arstn) begin 
 		shift_rv <= 0; 
 		shift_rl <= 0; 
+		rl <= 0;
+		rvalid <= 0;
 	end else if (state == WAIT_TRIGGER) begin
 		shift_rv <= 0; 
-		shift_rl <= 0; 
+		shift_rl <= 0;
+		rl <= 0;
+		rvalid <= 0; 
 	end else if (state == ACTIVE) begin
 		shift_rv <= shift_rv << 1; 
 		shift_rl <= shift_rl << 1; 
-		shift_rv <= {shift_rv[2:1], re}; 
-		shift_rl <= {shift_rl[2:1], shift_rl}; 
+		shift_rv[0] <= re; 
+		shift_rl[0] <= rlast; 
+		rvalid <= shift_rv[1];
+		rl <= shift_rl[1];
+		//shift_rv <= {shift_rv[2:1], re}; 
+		//shift_rl <= {shift_rl[2:1], shift_rl}; 
 	end 
 end
 
-assign rvalid = shift_rv[2]; 
-assign rl = shift_rl[2]; 
+assign shift_rv[0] = re;
+assign shift_rl[0] = rlast;
+//assign rvalid = shift_rv[2]; 
+//assign rl = shift_rl[2]; 
 // always_ff @(posedge clk) begin 
 //     rvalid <= re;
 //     rl <= rlast; 
@@ -366,22 +375,24 @@ logic fft_o_tlast;
 	.I(clk_i)
 );*/
 assign clk = clk_i;
+assign data_o = {rdata, rl};
+assign valid_o = rvalid;
 /// Task 4: instantiate the FFT IP 
-xfft_0 i_xfft_0(
-     .aclk(clk),
-     .s_axis_config_tvalid(rvalid),
-	 .s_axis_config_tdata(config_data.scale_sched),
-	 .s_axis_config_tready(fft_ready),
+// xfft_0 i_xfft_0(
+//      .aclk(clk),
+//      .s_axis_config_tvalid(rvalid),
+// 	 .s_axis_config_tdata(config_data.scale_sched),
+// 	 .s_axis_config_tready(fft_ready),
 
-     .s_axis_data_tvalid(rvalid), //check
-     .s_axis_data_tready(fft_d_ready),
-     .s_axis_data_tdata(rdata),
-	 .s_axis_data_tlast(rl),
+//      .s_axis_data_tvalid(rvalid), //check
+//      .s_axis_data_tready(fft_d_ready),
+//      .s_axis_data_tdata(rdata),
+// 	 .s_axis_data_tlast(rl),
 
-     .m_axis_data_tvalid(valid_o),
-     .m_axis_data_tdata(data_o),
-	 .m_axis_data_tready(ready_i),
-	 .m_axis_data_tlast(fft_o_tlast)); 
+//      .m_axis_data_tvalid(valid_o),
+//      .m_axis_data_tdata(data_o),
+// 	 .m_axis_data_tready(ready_i),
+// 	 .m_axis_data_tlast(fft_o_tlast)); 
      
 always_ff @(posedge clk) begin
     // $display("State: %b, State Next: %b", state, state_next);
